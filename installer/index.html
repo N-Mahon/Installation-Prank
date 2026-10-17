@@ -1,23 +1,66 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#151922">
   <title>Installer</title>
   <link rel="stylesheet" href="styles.css">
-  <script src="script.js" defer></script>
+  <script type="module" src="script.js"></script>
 </head>
 <body>
-  <template id="error">
-    <h1>ERROR!</h1>
-    <p>Couldn't find application</p>
-    <p>ERROR 403 - Forbidden</p>
-    <p>Inadequate social credits</p>
-    <p>Cruise missile request sent to <a href="https://www.fmprc.gov.cn/eng/">Ministry of Foreign Affairs of the People's Republic of China</a></p>
-  </template>
-  <main id="app">
-    <h1 class="title">Installer</h1>
-    <h2 id="step" class="step"></h2>
-    <div id="buttons"></div>
+  <main id="app" class="installer">
+    <header class="installer-header">
+      <div class="app-icon" aria-hidden="true">!</div>
+      <div>
+        <h1 class="title">Installer</h1>
+        <p class="subtitle">Installation and Compliance Utility</p>
+      </div>
+    </header>
+
+    <section class="installer-content" aria-labelledby="step">
+      <div class="progress-track"
+           role="progressbar"
+           aria-label="Installation progress"
+           aria-valuemin="0"
+           aria-valuemax="100"
+           aria-valuenow="0">
+        <div id="progress" class="progress-fill"></div>
+      </div>
+
+      <p id="progress-label" class="progress-label">
+        Initializing installation...
+      </p>
+
+      <h2 id="step" class="step">Preparing installer</h2>
+      <div id="content" class="step-content"></div>
+      <div id="buttons" class="buttons"></div>
+      <p id="status" class="status" role="status"
+         aria-live="polite"></p>
+    </section>
+
+    <footer class="installer-footer">
+      <span>Installer Utility</span>
+      <span>Version 0.0.1</span>
+    </footer>
   </main>
+
+  <template id="error">
+    <section class="error-screen">
+      <div class="error-symbol" aria-hidden="true">×</div>
+      <h1>CRITICAL INSTALLATION FAILURE</h1>
+      <p>Could not locate the requested application.</p>
+      <p class="error-code">ERROR 403: FORBIDDEN</p>
+      <p>Insufficient social credits.</p>
+      <p>
+        Cruise missile request sent to
+        <a href="https://www.fmprc.gov.cn/eng/"
+           target="_blank" rel="noopener noreferrer">
+          Ministry of Foreign Affairs of the People's Republic of China
+        </a>.
+      </p>
+    </section>
+  </template>
 </body>
+</html>
